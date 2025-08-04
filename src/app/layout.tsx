@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Bangers, Special_Elite } from 'next/font/google';
 import { ThemeProvider } from '@/components/ThemeProvider';
+import ScrollManager from '@/lib/ScrollManager';
 import './globals.css';
 
 const fontHeading = Bangers({
@@ -16,7 +17,7 @@ const fontBody = Special_Elite({
 });
 
 export const metadata: Metadata = {
-  title: 'TeaTime Creator!',
+  title: 'CHAITime Creator!',
   description: 'Support your favorite creators, one cup at a time.',
 };
 
@@ -30,10 +31,11 @@ export default function RootLayout({
       <body className={`${fontHeading.variable} ${fontBody.variable}`}>
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
+          defaultTheme="light"
           enableSystem
           disableTransitionOnChange
         >
+          <ScrollManager />
           {children}
         </ThemeProvider>
       </body>

@@ -12,7 +12,7 @@ const Footer = () => {
           <Link href="#" className="hover:text-accent transition-colors">Privacy Policy</Link>
         </div>
         <p className="text-sm text-primary-foreground/70">
-          © {new Date().getFullYear()} TeaTime. All Rights Reserved. Built with ❤️ for creators.
+          © {new Date().getFullYear()} CHAITime. All Rights Reserved. Built with ❤️ for creators.
         </p>
       </div>
     </footer>

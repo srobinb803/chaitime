@@ -6,7 +6,6 @@ import HowItWorks from '@/components/sections/HowItWorks';
 import GetStartedCTA from '@/components/sections/GetStarted';
 import WhyCreatorsLoveUs from '@/components/sections/WhyCreatorLoveUs';
 import Testimonials from '@/components/sections/testimonial';
-import AnimatedSection from '@/components/AnimatedSection';
 
 const HomePage: React.FC = () => {
   return (
@@ -14,26 +13,13 @@ const HomePage: React.FC = () => {
       <Header />
       <main className="flex-grow">
         <Hero />
-        
-        <AnimatedSection animationClass="animate-slide-up" delay="100ms">
-          <HowItWorks />
-        </AnimatedSection>
-        
-        <AnimatedSection animationClass="animate-slide-right" delay="200ms">
-          <WhyCreatorsLoveUs />
-        </AnimatedSection>
-        
-        <AnimatedSection animationClass="animate-pop-in" delay="300ms">
-          <Testimonials />
-        </AnimatedSection>
-        
-        <AnimatedSection animationClass="animate-fade-in" delay="400ms">
-          <GetStartedCTA />
-        </AnimatedSection>
+        <HowItWorks />
+        <WhyCreatorsLoveUs />
+        <Testimonials />
+        <GetStartedCTA />
       </main>
       <Footer />
     </div>
   );
 };
-
 export default HomePage;
