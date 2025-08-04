@@ -63,7 +63,7 @@ const WhyCreatorsLoveUs = () => {
               <div className="absolute bottom-4 left-4 right-4">
                 <div className="relative bg-panel-base border-2 border-primary p-3">
                   <p className="font-body text-center font-bold text-primary text-sm">
-                    FOCUS ON YOUR ART. <br/> WE'LL HANDLE THE REST.
+                    FOCUS ON YOUR ART. <br/> WE&apos;LL HANDLE THE REST.
                   </p>
                 </div>
               </div>
