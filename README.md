@@ -2,7 +2,7 @@
 
 CHAITime is a beautifully designed, comic-inspired platform where fans can support creators by "buying them a chai." Built with modern web technologies, it features a fully responsive design, light/dark modes, and smooth scroll-triggered animations.
 
-👉 [Live Demo](#) 
+👉 [Live Demo](https://chaitime.vercel.app/) 
 
 ## ✨ Key Features
 

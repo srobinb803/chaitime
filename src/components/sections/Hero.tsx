@@ -101,7 +101,7 @@ const HeroSection = () => {
             <div className="relative bg-panel-base border-3 border-primary p-6 h-full">
               <div className="relative mb-4">
                 <Image
-                  src="/cart.jpg"
+                  src="/tea1.png"
                   alt="CHAI vendor character"
                   className="w-full h-48 object-cover border-2 border-primary grayscale contrast-125"
                   width={600}
@@ -143,7 +143,7 @@ const HeroSection = () => {
             <div className="relative bg-panel-base border-3 border-primary p-4 h-full min-h-[50vh] lg:min-h-0">
               <div className="relative h-full">
                 <Image
-                  src="/cart.jpg"
+                  src="/cart1.png"
                   alt="Traditional CHAI cart scene"
                   className="w-full h-full object-cover border-2 border-primary filter contrast-110 saturate-110"
                   fill
