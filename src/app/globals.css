@@ -1,10 +1,10 @@
 @import "tailwindcss";
- @import "tw-animate-css"; 
+@import "tw-animate-css";
 
 
 @custom-variant dark (&:where(.dark, .dark *));
 
-@theme  {
+@theme {
   /* Font family tokens */
   --font-family-heading: 'Bangers', 'cursive';
   --font-family-body: 'Special Elite', 'monospace';
@@ -14,7 +14,7 @@
   --border-width-3: 3px;
 
   /* Core palette */
-   --color-background: hsl(220 13% 96%);
+  --color-background: hsl(220 13% 96%);
   --color-foreground: hsl(220 10% 25%);
   --color-primary: hsl(0 0% 9%);
   --color-primary-foreground: hsl(0 0% 100%);
@@ -40,7 +40,7 @@
   --color-destructive: hsl(0 100% 50%);
   --color-destructive-foreground: hsl(0 0% 100%);
   --color-ring: hsl(25 95% 53%);
-  
+
   /* Simplified set (light mode) */
   --background: hsl(220 13% 96%);
   --foreground: hsl(220 10% 25%);
@@ -57,102 +57,147 @@
   --border: hsl(0 0% 9%);
   --ring: hsl(25 95% 53%);
 
-  
+
 }
 
-/* 2. DARK MODE OVERRIDES */
-/* When `.dark` class is applied to a parent, these variables flip */
+/* 2. DARK MODE */
 .dark {
-   --color-background: hsl(220 13% 8%);
-    --color-foreground: hsl(220 14% 85%);
-    --color-primary: hsl(0 0% 95%);
-    --color-primary-foreground: hsl(0 0% 12%);
-    --color-accent: hsl(25 95% 65%);
-    --color-accent-foreground: hsl(0 0% 100%);
+  --color-background: hsl(220 13% 8%);
+  --color-foreground: hsl(220 14% 85%);
+  --color-primary: hsl(0 0% 95%);
+  --color-primary-foreground: hsl(0 0% 12%);
+  --color-accent: hsl(25 95% 65%);
+  --color-accent-foreground: hsl(0 0% 100%);
 
-    /* Panel variants */
-    --color-panel-base: hsl(220 12% 12%);
-    --color-panel-highlight: hsl(51 60% 20%);
-    --color-panel-accent: hsl(30 60% 22%);
-    --color-panel-warning: hsl(0 70% 22%);
+  /* Panel variants */
+  --color-panel-base: hsl(220 12% 12%);
+  --color-panel-highlight: hsl(51 60% 20%);
+  --color-panel-accent: hsl(30 60% 22%);
+  --color-panel-warning: hsl(0 70% 22%);
 
-    /* Muted/support tokens */
-    --color-muted: hsl(220 10% 65%);
-    --color-muted-foreground: hsl(220 14% 35%);
+  /* Muted/support tokens */
+  --color-muted: hsl(220 10% 65%);
+  --color-muted-foreground: hsl(220 14% 35%);
 
-    /* UI components */
-    --color-input: hsl(220 12% 18%);
-    --color-card: hsl(220 12% 10%);
-    --color-card-foreground: hsl(220 14% 85%);
-    --color-popover: hsl(51 60% 20%);
-    --color-popover-foreground: hsl(220 14% 85%);
-    --color-destructive: hsl(0 100% 60%);
-    --color-destructive-foreground: hsl(0 0% 100%);
-    --color-ring: hsl(25 95% 65%);
-    
-    /* Simplified set */
-    --background: hsl(220 13% 8%);
-    --foreground: hsl(220 14% 85%);
-    --primary: hsl(0 0% 95%);
-    --primary-foreground: hsl(0 0% 12%);
-    --panel-base: hsl(220 12% 12%);
-    --panel-highlight: hsl(51 60% 20%);
-    --panel-accent: hsl(30 60% 22%);
-    --panel-warning: hsl(0 70% 22%);
-    --accent: hsl(25 95% 65%);
-    --accent-foreground: hsl(0 0% 100%);
-    --muted: hsl(220 10% 65%);
-    --muted-foreground: hsl(220 14% 35%);
-    --border: hsl(220 12% 25%);
-    --ring: hsl(25 95% 65%);
+  /* UI components */
+  --color-input: hsl(220 12% 18%);
+  --color-card: hsl(220 12% 10%);
+  --color-card-foreground: hsl(220 14% 85%);
+  --color-popover: hsl(51 60% 20%);
+  --color-popover-foreground: hsl(220 14% 85%);
+  --color-destructive: hsl(0 100% 60%);
+  --color-destructive-foreground: hsl(0 0% 100%);
+  --color-ring: hsl(25 95% 65%);
+
+  /* Simplified set */
+  --background: hsl(220 13% 8%);
+  --foreground: hsl(220 14% 85%);
+  --primary: hsl(0 0% 95%);
+  --primary-foreground: hsl(0 0% 12%);
+  --panel-base: hsl(220 12% 12%);
+  --panel-highlight: hsl(51 60% 20%);
+  --panel-accent: hsl(30 60% 22%);
+  --panel-warning: hsl(0 70% 22%);
+  --accent: hsl(25 95% 65%);
+  --accent-foreground: hsl(0 0% 100%);
+  --muted: hsl(220 10% 65%);
+  --muted-foreground: hsl(220 14% 35%);
+  --border: hsl(220 12% 25%);
+  --ring: hsl(25 95% 65%);
 }
 
-/* 3. COMPONENT LAYER: manual utilities built using your tokens */
-@layer base {
+/* 3. COMPONENT LAYER: manual utilities  */
+@layer components {
+
   /* Background helpers */
-  .bg-background        { background-color: var(--color-background); }
-  .bg-foreground        { background-color: var(--color-foreground); }
-  .bg-primary           { background-color: var(--color-primary); }
-  .bg-accent            { background-color: var(--color-accent); }
-  .bg-panel-base        { background-color: var(--color-panel-base); }
-  .bg-panel-highlight   { background-color: var(--color-panel-highlight); }
-  .bg-panel-accent      { background-color: var(--color-panel-accent); }
-  .bg-panel-warning     { background-color: var(--color-panel-warning); }
+  .bg-background {
+    background-color: var(--color-background);
+  }
+
+  .bg-foreground {
+    background-color: var(--color-foreground);
+  }
+
+  .bg-primary {
+    background-color: var(--color-primary);
+  }
+
+  .bg-accent {
+    background-color: var(--color-accent);
+  }
+
+  .bg-panel-base {
+    background-color: var(--color-panel-base);
+  }
+
+  .bg-panel-highlight {
+    background-color: var(--color-panel-highlight);
+  }
+
+  .bg-panel-accent {
+    background-color: var(--color-panel-accent);
+  }
+
+  .bg-panel-warning {
+    background-color: var(--color-panel-warning);
+  }
 
   /* Text color helpers */
-  .text-foreground         { color: var(--color-foreground); }
-  .text-primary-foreground { color: var(--color-primary-foreground); }
-  .text-primary            { color: var(--color-primary); }
-  .text-accent             { color: var(--color-accent); }
-  .text-muted              { color: var(--color-muted); }
+  .text-foreground {
+    color: var(--color-foreground);
+  }
+
+  .text-primary-foreground {
+    color: var(--color-primary-foreground);
+  }
+
+  .text-primary {
+    color: var(--color-primary);
+  }
+
+  .text-accent {
+    color: var(--color-accent);
+  }
+
+  .text-muted {
+    color: var(--color-muted);
+  }
 
   /* Borders and rings */
-  .border-primary { border-color: var(--color-primary); }
-  .border-accent  { border-color: var(--color-accent); }
+  .border-primary {
+    border-color: var(--color-primary);
+  }
+
+  .border-accent {
+    border-color: var(--color-accent);
+  }
 
   .ring-ring {
     --tw-ring-color: var(--color-ring);
   }
-  
+
 }
 
 /* 4. GLOBAL BASE STYLES */
 @layer base {
   * {
     border-color: var(--color-foreground);
-   
+
   }
+
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-family-body);
   }
-  h1, h2, h3, h4, h5, h6 {
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-family: var(--font-family-heading);
-   
+
   }
 }
-
-
-
-

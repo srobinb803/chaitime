@@ -112,7 +112,7 @@ const HeroSection = () => {
 
               <div className="relative bg-panel-base border-2 border-primary rounded-full p-4 mb-4">
                 <div className="text-sm font-bold text-center">
-                  "BUY CHAI FOR YOUR FAVORITE CREATORS!"
+                 &quot;BUY TEA FOR YOUR FAVORITE CREATORS!&quot;
                 </div>
                 <div className="absolute -bottom-2 left-6 w-0 h-0 border-l-8 border-r-8 border-t-8 border-l-transparent border-r-transparent border-t-primary"></div>
                 <div className="absolute -bottom-1 left-6 w-0 h-0 border-l-7 border-r-7 border-t-7 border-l-transparent border-r-transparent border-t-panel-base"></div>

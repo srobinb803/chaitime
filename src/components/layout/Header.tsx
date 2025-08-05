@@ -16,7 +16,7 @@ const Header = () => {
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
-      
+
       // Update active section based on scroll position
       const sections = ['#how-it-works', '#why-us', '#testimonials'];
       const currentSection = sections.find(section => {
@@ -27,10 +27,10 @@ const Header = () => {
         }
         return false;
       });
-      
+
       setActiveSection(currentSection || '');
     };
-    
+
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -42,7 +42,7 @@ const Header = () => {
         setIsOpen(false);
       }
     };
-    
+
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, [isOpen]);
@@ -77,45 +77,44 @@ const Header = () => {
     visible: {
       y: 0,
       opacity: 1,
-      transition: { 
-        type: "spring", 
-        stiffness: 300, 
-        damping: 24 
+      transition: {
+        type: "spring",
+        stiffness: 300,
+        damping: 24
       }
     }
   };
 
   return (
     <>
-      <header 
-        className={`fixed top-0 z-50 w-full border-b-3 border-primary transition-all duration-300 ${
-          scrolled ? 'bg-panel-base/95 backdrop-blur-sm shadow-lg' : 'bg-panel-base/50'
-        }`}
+      <header
+        className={`fixed top-0 z-50 w-full border-b-3 border-primary transition-all duration-300 ${scrolled ? 'bg-panel-base/95 backdrop-blur-sm shadow-lg' : 'bg-panel-base/50'
+          }`}
       >
         <div className="container mx-auto flex h-20 items-center justify-between px-4">
           {/* Logo and Title */}
-          <motion.div 
+          <motion.div
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="flex items-baseline gap-2 cursor-pointer"
             onClick={() => scrollToSection('#home')}
-          > 
-              <Image
-                src="/logo.png"
-                alt="CHAITime Logo"
-                width={35}
-                height={35}
-              />
-            <span 
+          >
+            <Image
+              src="/logo.png"
+              alt="CHAITime Logo"
+              width={35}
+              height={35}
+            />
+            <span
               className="text-3xl font-bold text-primary font-heading tracking-wider"
-              
+
             >
               CHAITime
             </span>
           </motion.div>
 
           {/* Desktop Navigation Links */}
-          <nav 
+          <nav
             ref={navRef}
             className="hidden md:flex items-center gap-6 font-body font-bold text-lg text-muted"
           >
@@ -127,15 +126,14 @@ const Header = () => {
                 initial="hidden"
                 animate="visible"
               >
-                <a 
-                  href={item.href} 
+                <a
+                  href={item.href}
                   onClick={(e) => {
                     e.preventDefault();
                     scrollToSection(item.href);
                   }}
-                  className={`flex items-center gap-2 hover:text-primary transition-colors cursor-pointer py-1 px-2 rounded-lg ${
-                    activeSection === item.href ? 'bg-panel-accent text-primary' : ''
-                  }`}
+                  className={`flex items-center gap-2 hover:text-primary transition-colors cursor-pointer py-1 px-2 rounded-lg ${activeSection === item.href ? 'bg-panel-accent text-primary' : ''
+                    }`}
                 >
                   <span className="text-accent">
                     {item.icon}
@@ -143,7 +141,7 @@ const Header = () => {
                   {item.name}
                 </a>
                 {activeSection === item.href && (
-                  <motion.div 
+                  <motion.div
                     layoutId="activeSection"
                     className="absolute bottom-0 left-0 w-full h-1 bg-accent rounded-full"
                     transition={{ type: "spring", stiffness: 300, damping: 30 }}
@@ -155,9 +153,9 @@ const Header = () => {
 
           {/* Action Buttons & Theme Toggle - Removed sign-in animations */}
           <div className="hidden md:flex items-center gap-4">
-            <Button 
+            <Button
               variant="outline"
-              className="border-3 border-primary font-heading tracking-wider hover:bg-primary hover:text-primary-foreground group cursor-pointer"
+              className="relative overflow-hidden border-3 border-primary font-heading tracking-wider hover:bg-primary hover:text-primary-foreground group"
             >
               <span className="relative z-10">Sign In</span>
             </Button>
@@ -170,7 +168,7 @@ const Header = () => {
             <motion.button
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
-              onClick={() => setIsOpen(!isOpen)} 
+              onClick={() => setIsOpen(!isOpen)}
               className="ml-4 h-12 w-12 border-3 border-primary bg-panel-base rounded-full flex items-center justify-center"
             >
               {isOpen ? <X className="h-6 w-6 text-primary" /> : <Menu className="h-6 w-6 text-primary" />}
@@ -183,30 +181,22 @@ const Header = () => {
       {/* Mobile Menu Overlay with Animation */}
       <AnimatePresence>
         {isOpen && (
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             className="fixed inset-0 z-40 bg-background/95 backdrop-blur-sm md:hidden"
           >
-            <motion.div 
+            <motion.div
               initial={{ y: -50 }}
               animate={{ y: 0 }}
               exit={{ y: -50 }}
               className="absolute top-5 right-5"
             >
-              <motion.button
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-                onClick={() => setIsOpen(false)} 
-                className="h-12 w-12 border-3 border-primary bg-panel-base rounded-full flex items-center justify-center"
-              >
-                <X className="h-6 w-6 text-primary" />
-                <span className="sr-only">Close Menu</span>
-              </motion.button>
+              
             </motion.div>
-            
-            <motion.nav 
+
+            <motion.nav
               variants={containerVariants}
               initial="hidden"
               animate="visible"
@@ -218,15 +208,14 @@ const Header = () => {
                   variants={itemVariants}
                   className="w-full max-w-md"
                 >
-                  <a 
-                    href={item.href} 
+                  <a
+                    href={item.href}
                     onClick={(e) => {
                       e.preventDefault();
                       scrollToSection(item.href);
                     }}
-                    className={`flex flex-col items-center justify-center gap-2 font-heading text-3xl text-primary hover:text-accent transition-colors py-4 rounded-xl ${
-                      activeSection === item.href ? 'bg-panel-accent' : 'bg-panel-base'
-                    } border-3 border-primary`}
+                    className={`flex flex-col items-center justify-center gap-2 font-heading text-3xl text-primary hover:text-accent transition-colors py-4 rounded-xl ${activeSection === item.href ? 'bg-panel-accent' : 'bg-panel-base'
+                      } border-3 border-primary`}
                   >
                     <div className="text-accent">
                       {item.icon}
@@ -235,9 +224,9 @@ const Header = () => {
                   </a>
                 </motion.div>
               ))}
-              
+
               <div className="mt-8 w-full max-w-md">
-                <Button 
+                <Button
                   variant="outline"
                   className="w-full border-3 border-primary font-heading tracking-wider text-xl py-6 hover:bg-primary hover:text-primary-foreground"
                 >
