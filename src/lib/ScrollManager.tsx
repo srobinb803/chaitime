@@ -1,33 +1,50 @@
 'use client';
-import { usePathname, useSearchParams } from 'next/navigation';
-import { useEffect } from 'react';
+import { usePathname } from 'next/navigation';
+import { useEffect, useRef } from 'react';
 
 export default function ScrollManager() {
   const pathname = usePathname();
-  const searchParams = useSearchParams();
-  const url = pathname + searchParams.toString();
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
-    // Save scroll position before unload
-    const handleBeforeUnload = () => {
+    // Save scroll position before navigation
+    const handleScroll = () => {
       sessionStorage.setItem(`scrollPos-${pathname}`, window.scrollY.toString());
     };
 
-    window.addEventListener('beforeunload', handleBeforeUnload);
+    // Listen to both beforeunload and scroll events
+    window.addEventListener('beforeunload', handleScroll);
+    window.addEventListener('scroll', handleScroll);
     
     return () => {
-      window.removeEventListener('beforeunload', handleBeforeUnload);
+      window.removeEventListener('beforeunload', handleScroll);
+      window.removeEventListener('scroll', handleScroll);
     };
   }, [pathname]);
 
   useEffect(() => {
-    // Restore scroll position after load
+    // Clear any existing timeout
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+
+    // Restore scroll position after navigation
     const savedPosition = sessionStorage.getItem(`scrollPos-${pathname}`);
     if (savedPosition !== null) {
-      window.scrollTo(0, parseInt(savedPosition));
-      sessionStorage.removeItem(`scrollPos-${pathname}`);
+      // Use timeout to ensure DOM is fully rendered
+      timeoutRef.current = setTimeout(() => {
+        window.scrollTo(0, parseInt(savedPosition));
+        sessionStorage.removeItem(`scrollPos-${pathname}`);
+      }, 50);
     }
-  }, [pathname, url]);
+
+    return () => {
+      // Clear timeout on unmount
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+    };
+  }, [pathname]);
 
   return null;
 }
