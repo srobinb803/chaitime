@@ -128,7 +128,7 @@
   --color-ring: var(--ring);
   --radius-default: var(--radius-default);
   --border-width-3: var(--border-width-3);
-  --fo nt-family-heading: var(--font-family-heading);
+  --font-family-heading: var(--font-family-heading);
   --font-family-body: var(--font-family-body);
 }
 
